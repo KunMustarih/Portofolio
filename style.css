@@ -1,42 +1,45 @@
 
 html, body {
   width: 100%;
-  height:100%;
+  height: 100%;
+
 }
 
 body {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  /*background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);*/
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
 
 @keyframes gradient {
   0% {
-    background-position: 0% 50%;
+    background-position: 0 50%;
   }
   50% {
     background-position: 100% 50%;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0 50%;
   }
 }
 
+#front-page {
+  display: grid;
+  grid-template-rows: 1fr 0.3fr;
+
+}
 
 main {
   display: grid;
-  grid-template-rows: 2fr 2fr 2fr 0.5fr;
-}
-
-#Introduction {
-  grid-row: 1/2;
-  height: 100vh;
+  grid-template-rows: 2fr 2fr 2fr;
+  background-color: black;
 }
 
 #Introduction {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 }
+
 
 #first-intro {
   margin-top: 40vh;
@@ -50,49 +53,53 @@ main {
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .15em; /* Adjust as needed */
-  animation:
-          typing 3.5s steps(40, end),
-          blink-caret .75s step-end infinite;
+  animation: typing 3.5s steps(40, end),
+  blink-caret .75s step-end infinite;
 }
 
 @keyframes typing {
-  from { width: 0 }
-  to { width: 60% }
+  from {
+    width: 0
+  }
+  to {
+    width: 60%
+  }
 }
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: orange; }
+  from, to {
+    border-color: transparent
+  }
+  50% {
+    border-color: orange;
+  }
 }
 
 
 #first-intro > p {
   font-size: 1.8em;
   font-weight: bold;
-  color: #68ffca;
+  color: #63acff;
   font-style: oblique;
-  font-family: Tahoma;
+  font-family: Tahoma, serif;
   margin-bottom: 3vh;
-  margin-top: 3vh ;
+  margin-top: 3vh;
 }
 
 #name {
   width: fit-content;
   font-weight: bold;
-  color: #68ffca;
+  color: #63acff;
   font-style: oblique;
-  font-family: Tahoma;
+  font-family: Tahoma, serif;
   font-size: 2em;
 }
 
-
-img {
-  margin-top: 10vh;
-  margin-left: 4vw;
-  border-radius: 40px;
-  height: auto;
-  max-width: 100%;
+#Introduction img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 * {
@@ -101,13 +108,13 @@ img {
   padding: 0;
   box-sizing: border-box;
   outline: none;
-  border:none;
+  border: none;
   text-decoration: none;
   text-transform: uppercase;
-  transition: all .2s linear ;
+  transition: all .2s linear;
 }
 
-body,html {
+body, html {
   overflow-x: hidden;
 }
 
@@ -120,6 +127,7 @@ body,html {
   cursor: pointer;
   z-index: 1010;
   font-size: 3rem;
+  color: #63acff;
 }
 
 #nav-toggle:checked {
@@ -152,8 +160,8 @@ body,html {
 
 #navigation a {
   font-size: 4em;
-  color: transparent;
-  -webkit-text-stroke: .5px rgba(33, 115, 217,.5);
+  color: black;
+  -webkit-text-stroke: 1px rgba(33, 115, 217, .5);
   font-weight: bolder;
   position: relative;
   letter-spacing: 3px;
@@ -164,7 +172,7 @@ body,html {
   position: absolute;
   top: 0;
   left: 0;
-  color: rgba(255,255,255,.9);
+  color: rgba(255, 255, 255, .9);
   transition: .3s linear;
   clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
 }
@@ -174,28 +182,29 @@ body,html {
 }
 
 
+
 .background-image {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background: url("first.png");
   background-size: cover;
-  background-position: center;
+  background: url("first.png") center;
   z-index: -1;
 }
 
 
-@media (max-width:450px) {
+@media (max-width: 450px) {
   #navigation a {
-    font-size:2em;
+    font-size: 2em;
   }
 }
 
 #Resume {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  background-color: white;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   gap: 70px;
   justify-content: space-evenly;
   justify-items: center;
@@ -204,35 +213,38 @@ body,html {
 }
 
 #Resume > .points {
-
-  color: white;
-  font-style: italic;
+  color: black;
   font-size: 1.5em;
   height: 100vh;
-  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
-  box-shadow: 20px 20px rgba(0,0,0,.15);
+  border-radius: 0 0 0 0 / 0 0 0 0;
+  box-shadow: 20px 20px rgba(0, 0, 0, .15);
   transition: all .4s;
   width: fit-content;
-  min-width: 20vw ;
+  min-width: 20vw;
   max-height: 21em;
 }
 
-#Resume >.points:hover {
-  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
-  box-shadow: 10px 10px rgba(0,0,0,.25);
+#Resume > .points:hover {
+  border-radius: 0 0 50% 50% / 0 0 5% 5%;
+  box-shadow: 10px 10px rgba(0, 0, 0, .25);
 }
 
-.points > h3 {
+h3 {
   text-align: center;
   font-family: "Courier New", serif;
+  text-shadow: 2px 2px #63acff;
 }
 
+
+#Education {
+  overflow: auto;
+}
 
 #Experience {
   overflow: scroll;
 }
 
-#skills{
+#skills {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-evenly;
@@ -244,8 +256,201 @@ body,html {
 
 
 li {
+  margin-left: 1em;
   margin-bottom: 20px;
 }
 
+#Projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  width: fit-content;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+  gap: 40px;
+  color: white;
+  font-size: 1.5em;
+}
 
+#Calculator > img {
+  width: 10em;
+}
 
+.project{
+  transition: all .2s ease-in-out;
+  border: 5px double;
+  box-shadow: 10px 10px rgba(0, 0, 0, .25);
+}
+
+.project:hover {
+  transform: scale(1.1);
+  border: 5px solid;
+}
+
+.project > a > img {
+  display: block;
+  width: 15em;
+  margin: 1em auto;
+
+}
+
+.project > a > p {
+  text-align: center;
+  color:white;
+  /*margin-top: 1em;*/
+}
+
+#Calculator > a >i {
+  font-size: 2em;
+  margin-left: 17%;
+  position: relative;
+  color: white;
+
+}
+
+#gesture > a > i, #Quiz >a> i {
+  position: relative;
+  font-size: 3em;
+  margin-left: 45%;
+  color: white;
+}
+
+footer {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+#socials ul {
+  display: flex;
+  margin-top: 10em;
+  margin-left: 0;
+  margin-right: 0;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+}
+
+#socials ul li {
+  list-style: none;
+  margin: 0 5px;
+}
+
+#socials ul li a .fa {
+  font-size: 40px;
+  color: #262626;
+  line-height: 80px;
+  transition: .5s;
+  padding-right: 14px;
+}
+
+#socials ul li a span {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 30px;
+  color: #262626;
+  letter-spacing: 4px;
+  transition: .5s;
+}
+
+#socials ul li a {
+  text-decoration: none;
+  display: block;
+  width: 210px;
+  height: 80px;
+  background: #fff;
+  text-align: left;
+  padding-left: 20px;
+  transform: rotate(-30deg) skew(25deg) translate(0, 0);
+  transition: .5s;
+  box-shadow: -20px 20px 10px rgba(0, 0, 0, .5);
+}
+
+#socials ul li a:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  height: 100%;
+  width: 20px;
+  background: #b1b1b1;
+  transition: .5s;
+  transform: rotate(0deg) skewY(-45deg);
+}
+
+#socials ul li a:after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: -10px;
+  height: 20px;
+  width: 100%;
+  background: #b1b1b1;
+  transition: .5s;
+  transform: rotate(0deg) skewX(-45deg);
+}
+
+#socials ul li a:hover {
+  transform: rotate(-30deg) skew(25deg) translate(20px, -15px);
+  box-shadow: -50px 50px 50px rgba(0, 0, 0, .5);
+}
+
+#socials ul li:hover .fa {
+  color: #fff;
+}
+
+#socials ul li:hover span {
+  color: #fff;
+}
+
+#socials ul li:hover:nth-child(1) a {
+  background: #3b5998;
+}
+
+#socials ul li:hover:nth-child(1) a:before {
+  background: #365492;
+}
+
+#socials ul li:hover:nth-child(1) a:after {
+  background: #4a69ad;
+}
+
+#socials ul li:hover:nth-child(2) a {
+  background: #000000;
+}
+
+#socials ul li:hover:nth-child(2) a:before {
+  background: #000000;
+}
+
+#socials ul li:hover:nth-child(2) a:after {
+  background: #000000;
+}
+
+#socials ul li:hover:nth-child(3) a {
+  background: #0072b1;
+}
+
+#socials ul li:hover:nth-child(3) a:before {
+  background: #04486d;
+}
+
+#socials ul li:hover:nth-child(3) a:after {
+  background: #0a91dc;
+}
+
+#socials ul li:hover:nth-child(4) a {
+  background: #e4405f;
+}
+
+#socials ul li:hover:nth-child(4) a:before {
+  background: #d81c3f;
+}
+
+#socials ul li:hover:nth-child(4) a:after {
+  background: #e46880;
+}
